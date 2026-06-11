@@ -1,6 +1,4 @@
-// src/components/TaskCard.jsx
 
-// Config-driven buttons — wahi optimized approach!
 const STATUS_BUTTONS = {
   todo:      [{ label: "Start",    clss: "start",    next: "progress"  },
               { label: " Delete",   clss: "delete",   next: "deleted"   }],

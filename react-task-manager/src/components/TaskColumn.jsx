@@ -11,10 +11,9 @@ deleted: "Deleted",
 export default function TaskColumn({ status, tasks, onUpdateStatus, onDeletePermanently }) {
   return (
     <div className={`column column-${status}`}>
-      <h2>{TITLES[status]} <span className="count">{tasks.length}</span></h2>
-      {tasks.length === 0
-        ? <p className="empty">No tasks here</p>
-        : tasks.map(task => (
+      <h2>{TITLES[status]}</h2>
+      
+        {tasks.map(task => (
             <TaskCard
               key={task.id}
               task={task}
@@ -22,8 +21,8 @@ export default function TaskColumn({ status, tasks, onUpdateStatus, onDeletePerm
               onDeletePermanently={onDeletePermanently}
             />
           ))
-      }
+        
+       }
     </div>
   );
 }
-Commit:
