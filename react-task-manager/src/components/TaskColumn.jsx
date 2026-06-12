@@ -8,21 +8,27 @@ completed : "Completed",
 deleted: "Deleted",
 };
 
-export default function TaskColumn({ status, tasks, onUpdateStatus, onDeletePermanently }) {
+export default function TaskColumn({ status, tasks, onUpdateStatus, onDeletePermanently ,onEdit}) {
   return (
     <div className={`column column-${status}`}>
-      <h2>{TITLES[status]}</h2>
+       <div className="column-header">
+        <span className="col-title">{TITLES[status]}</span>
+        <span className="col-count">{tasks.length}</span>
+      </div>
       
+      <div className="column-body">
         {tasks.map(task => (
             <TaskCard
               key={task.id}
               task={task}
               onUpdateStatus={onUpdateStatus}
               onDeletePermanently={onDeletePermanently}
+              onEdit={onEdit}
             />
           ))
         
        }
+       </div>
     </div>
   );
 }
