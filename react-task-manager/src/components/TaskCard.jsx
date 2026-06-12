@@ -9,12 +9,20 @@ const STATUS_BUTTONS = {
               { label: " Delete Forever", clss: "perm-delete", next: null }],
 };
 
-export default function TaskCard({ task, onUpdateStatus, onDeletePermanently }) {
+export default function TaskCard({ task, onUpdateStatus, onDeletePermanently,onEdit }) {
   const buttons = STATUS_BUTTONS[task.status];
 
   return (
     <div className="task-card">
-      <p>{task.text}</p>
+       <div className="card-top">
+        <h4 className="card-title">{task.title}</h4>
+        {task.status !== "deleted" && (
+          <button className="btn-edit" onClick={() => onEdit(task)} title="Edit">
+            Edit
+          </button>
+        )}
+      </div>
+      {task.description && (<p className="card-desc">{task.description}</p> )}
       <div className="btn-group">
         {buttons.map(btn => (
           <button
