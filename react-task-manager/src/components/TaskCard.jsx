@@ -1,19 +1,15 @@
 
-const STATUS_BUTTONS = {
-  todo:      [{ label: "Start",    clss: "start",    next: "progress"  },
-              { label: " Delete",   clss: "delete",   next: "deleted"   }],
-  progress:  [{ label: " Complete", clss: "complete", next: "completed" },
-              { label: " Delete",   clss: "delete",   next: "deleted"   }],
-  completed: [{ label: " Delete",   clss: "delete",   next: "deleted"   }],
-  deleted:   [{ label: " Restore",  clss: "restore",  next: "todo"      },
-              { label: " Delete Forever", clss: "perm-delete", next: null }],
-};
 
-export default function TaskCard({ task, onUpdateStatus, onDeletePermanently,onEdit }) {
-  const buttons = STATUS_BUTTONS[task.status];
+export default function TaskCard({ task,onDeletePermanently,onEdit }) {
+
+    const handleDragStart = (e) => {
+    e.dataTransfer.setData("taskId", task.id);
+  };
 
   return (
-    <div className="task-card">
+    <div className="task-card"
+    draggable              
+      onDragStart={handleDragStart} >
        <div className="card-top">
         <h4 className="card-title">{task.title}</h4>
         {task.status !== "deleted" && (
@@ -23,21 +19,7 @@ export default function TaskCard({ task, onUpdateStatus, onDeletePermanently,onE
         )}
       </div>
       {task.description && (<p className="card-desc">{task.description}</p> )}
-      <div className="btn-group">
-        {buttons.map(btn => (
-          <button
-            key={btn.label}
-            className={btn.clss}
-            onClick={() =>
-              btn.next
-                ? onUpdateStatus(task.id, btn.next)
-                : onDeletePermanently(task.id)
-            }
-          >
-            {btn.label}
-          </button>
-        ))}
-      </div>
+      {task.status === "deleted" && (<button className="btn-del" onClick={()=> onDeletePermanently(task.id)}>Remove</button>)}
     </div>
   );
 }

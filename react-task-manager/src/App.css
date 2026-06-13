@@ -159,9 +159,9 @@ body {
 .btn-edit:hover { background: rgba(255,255,255,0.1); }
 
 
-.btn-group { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
 
-.btn-group button {
+
+.btn-del {
   padding: 5px 11px;
   border: none;
   border-radius: 7px;
@@ -170,13 +170,9 @@ body {
   cursor: pointer;
   transition: opacity 0.15s, transform 0.1s;
 }
-.btn-group button:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-del:hover { opacity: 0.85; transform: translateY(-1px); }
 
-.btn-start    { background: linear-gradient(135deg, #3b82f6, #60a5fa); color: #fff; }
-.btn-complete { background: linear-gradient(135deg, #059669, #34d399); color: #fff; }
-.btn-delete   { background: linear-gradient(135deg, #dc2626, #f87171); color: #fff; }
-.btn-restore  { background: linear-gradient(135deg, #d97706, #fbbf24); color: #fff; }
-.btn-perm     { background: linear-gradient(135deg, #7f1d1d, #ef4444); color: #fff; }
+
 
 .modal-overlay {
   position: fixed;

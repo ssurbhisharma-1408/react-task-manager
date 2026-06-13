@@ -8,9 +8,25 @@ completed : "Completed",
 deleted: "Deleted",
 };
 
-export default function TaskColumn({ status, tasks, onUpdateStatus, onDeletePermanently ,onEdit}) {
+
+
+
+export default function TaskColumn({ status, tasks, onDeletePermanently ,onEdit,onDrop }) {
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const taskId = Number(e.dataTransfer.getData("taskId"));
+    onDrop(taskId, status);
+  };
+
+
   return (
-    <div className={`column column-${status}`}>
+    <div className={`column column-${status}`}
+     onDragOver={handleDragOver}
+      onDrop={handleDrop}>
        <div className="column-header">
         <span className="col-title">{TITLES[status]}</span>
         <span className="col-count">{tasks.length}</span>
@@ -21,7 +37,6 @@ export default function TaskColumn({ status, tasks, onUpdateStatus, onDeletePerm
             <TaskCard
               key={task.id}
               task={task}
-              onUpdateStatus={onUpdateStatus}
               onDeletePermanently={onDeletePermanently}
               onEdit={onEdit}
             />
