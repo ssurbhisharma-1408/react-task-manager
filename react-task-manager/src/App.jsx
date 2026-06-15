@@ -23,29 +23,8 @@ export default function App() {
    const [searchInput,setSearchInput]=useState("");
    const [searchQuery,setSearchQuery] = useState("");
 
-
-   /*const autoIncrement=()=>{
-         timer = setTimeout(()=>{
-          setCounter(prev => prev+2);
-          autoIncrement();
-        },3000);
-   }
-
-    const increment =()=>{
-      setCounter(prev => prev+2);
-      if (timer){
-        clearTimeout(timer);
-      }
-      autoIncrement();
-    }
-    const handleReset=()=>{
-      setCounter(0); 
-      if (timer){
-        clearTimeout(timer); 
-        timer=null}}*/
-    
-        const autoIncrement=()=>{
-          timer =setTimeout(()=>{
+     const autoIncrement=()=>{
+          timer = setTimeout(()=>{
             setCounter(prev=>prev+2);
             autoIncrement();
           },3000)
