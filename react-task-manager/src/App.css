@@ -79,13 +79,10 @@ body {
   padding: 2px 4px;
   border-radius: 4px;
 }
-.search-wrapper {
-  position: relative; /* already hoga, confirm karo */
-}
 
 .search-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 0;
   right: 0;
   background: #1e1b3a;
@@ -96,7 +93,6 @@ body {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   max-height: 320px;
   overflow-y: auto;
-  animation: slideUp 0.2s ease;
 }
 
 .search-result-item {
@@ -107,6 +103,7 @@ body {
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 12px;
   transition: background 0.15s;
+  font-size: 12px;
 }
 .search-result-top {
   display: flex;
@@ -115,8 +112,6 @@ body {
   gap: 8px;
   margin-bottom: 4px;
 }
-
-
 
 .btn-add-task {
   padding: 10px 22px;

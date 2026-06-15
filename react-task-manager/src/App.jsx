@@ -6,6 +6,8 @@ import "./App.css";
 
 const COLUMNS = ["todo", "progress", "completed", "deleted"];
 
+  let timer = null;
+
 export default function App() {
   const [tasks, setTasks] = useState(
     () => JSON.parse(localStorage.getItem("tasks")) || []
@@ -21,12 +23,47 @@ export default function App() {
    const [searchInput,setSearchInput]=useState("");
    const [searchQuery,setSearchQuery] = useState("");
 
+
+   /*const autoIncrement=()=>{
+         timer = setTimeout(()=>{
+          setCounter(prev => prev+2);
+          autoIncrement();
+        },3000);
+   }
+
     const increment =()=>{
       setCounter(prev => prev+2);
-      setTimeout(()=>{
-         setCounter(prev=> prev+2);
-      },3000)
+      if (timer){
+        clearTimeout(timer);
+      }
+      autoIncrement();
     }
+    const handleReset=()=>{
+      setCounter(0); 
+      if (timer){
+        clearTimeout(timer); 
+        timer=null}}*/
+    
+        const autoIncrement=()=>{
+          timer =setTimeout(()=>{
+            setCounter(prev=>prev+2);
+            autoIncrement();
+          },3000)
+        }
+        const increment =()=>{
+          setCounter(prev=>prev+2);
+          if(timer){
+            clearTimeout(timer);
+          }
+          autoIncrement();
+        }
+        const handleReset = ()=>{
+          setCounter(0);
+          if(timer){
+            clearTimeout(timer);
+          }
+        }
+
      useEffect (()=>{
       const timer = setTimeout(()=>{
         setSearchQuery(searchInput);
@@ -146,7 +183,7 @@ export default function App() {
     
           <div className = "counter-btns">
           <button className="counter-btn" onClick={increment}> Counter {count}</button>
-          <button className= "counter-btn" onClick={()=>setCounter(0)}> Reset</button>
+          <button className= "counter-btn" onClick={handleReset}> Reset</button>
           </div>
        
 
